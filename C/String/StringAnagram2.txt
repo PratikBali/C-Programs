@@ -1,0 +1,100 @@
+#include<stdio.h>
+#include<string.h>
+
+typedef int BOOL;
+#define TRUE 1
+#define FALSE 0
+
+BOOL CheckAnagram(char first[],char second[])
+{
+    int i=0,j=0,k=1;
+
+    int len1 =strlen(first);
+    int len2 =strlen(second);
+
+    int arr[26]={0};
+    
+    //printf("\n len1 :%d",len1);
+    //printf("\n len2 :%d",len2);
+    
+    if(len1!=len2)
+    {
+            return FALSE;
+    }
+    
+
+    for(i=0;i<len1;i++)
+    {
+        if((first[i]>='A') && (first[i]<='Z'))
+        {
+            j=first[i]-'A';
+            arr[j]++;
+                printf("\n %c",first[i]);
+                printf(" \n %d ",arr[j]);
+        }
+        if((first[i]>='a') && (first[i]<='z'))
+        {
+            j=first[i]-'a';
+            arr[j]++;
+                printf("\n\n first[%d] : %c",i,first[i]);
+                printf(" \n j : %d ",j);
+                printf(" \n arr[%d] : %d ",j,arr[j]);
+        }
+        if((second[i]>='A') && (second[i]<='Z'))
+        {
+            j=first[i]-'A';
+            arr[j]--;
+                printf(" %c",second[i]);
+                printf(" \n %d ",arr[j]);
+        }
+        if(( second[i]>='a') && (second[i]<='z'))
+        {
+            j=first[i]-'a';
+            arr[j]--;
+                printf("\n\n second[%d] : %c",i,second[i]);
+                printf("\n j : %d",j);
+            printf(" \n arr[%d] :%d ",j,arr[j]);
+        }
+    }
+    for(i=0;i<26;i++)
+    {
+        //printf("\n i : %d",i);
+        if(arr[i]!=0)
+        {
+            k=0;
+            break;
+        }
+    }
+    printf("\n\n i : %d \n",i);
+    if(i<26)
+    {
+        printf("\n inside check \n");
+        return FALSE;
+    }
+    else
+    {
+        printf("\n inside else \n");
+        return TRUE;
+    }
+}
+
+int main()
+{
+    char  arr[]="asdf";
+    char  brr[]="asdf";
+    
+    
+    BOOL iret=FALSE;
+    iret=CheckAnagram(arr,brr);
+    
+    if(iret==TRUE)
+    {
+        printf("\n Array is anagram \n");
+    }
+    else
+    {
+        printf("\n Not anagram \n");
+    }
+    return 0;
+    
+}
